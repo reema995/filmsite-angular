@@ -29,6 +29,13 @@ export class App {
     reports: ['\u0627\u0644\u062A\u0642\u0627\u0631\u064A\u0631', 'Reports'],
     projects: ['\u0627\u0644\u0645\u0634\u0627\u0631\u064A\u0639', 'Projects'],
   };
+
+  showAddWorkerModal = false;
+  showWorkerDetailsModal = false;
+  selectedWorker: any = null;
+  
+  villages = ['أم صيحون', 'بيض', 'البيضاء', 'رجيفة'];
+
   get pageTitle(): string {
     return this.titles[this.activeScreen][0];
   }
@@ -37,5 +44,19 @@ export class App {
   }
   showScreen(screen: ScreenId): void {
     this.activeScreen = screen;
+  }
+
+  toggleAddWorkerModal(show: boolean): void {
+    this.showAddWorkerModal = show;
+  }
+
+  viewWorkerDetails(worker: any): void {
+    this.selectedWorker = worker;
+    this.showWorkerDetailsModal = true;
+  }
+
+  closeWorkerDetails(): void {
+    this.showWorkerDetailsModal = false;
+    this.selectedWorker = null;
   }
 }

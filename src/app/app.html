@@ -1,48 +1,46 @@
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="logo-area">
-    <img class="logo-img"
-      src="/logo-white.png"
-      alt="BaytAlUrdon">
+    <img class="logo-img" src="/logo-white.png" alt="BaytAlUrdon">
     <div class="logo-text">
       <div class="l1">BaytAlUrdon</div>
-      <div class="l2">FilmSite Manager</div>
+      <div class="l2"> Workforce Management System </div>
     </div>
   </div>
 
   <div class="project-pill">
     <div class="pp-label">المشروع الحالي</div>
     <div class="pp-name">فيلم البتراء — الجزء الثاني</div>
-    <div class="pp-loc">📍 مواقع البتراء · الأردن</div>
+    <div class="pp-loc">مواقع البتراء · الأردن</div>
   </div>
 
   <nav>
     <div class="nav-section">الرئيسية</div>
     <div class="nav-item" [class.active]="activeScreen === 'dashboard'" (click)="showScreen('dashboard')">
-      <span class="nav-icon">🏠</span> لوحة التحكم
+      لوحة التحكم
     </div>
     <div class="nav-item" [class.active]="activeScreen === 'projects'" (click)="showScreen('projects')">
-      <span class="nav-icon">🎬</span> المشاريع
+      المشاريع
     </div>
 
     <div class="nav-section">العمالة</div>
     <div class="nav-item" [class.active]="activeScreen === 'workers'" (click)="showScreen('workers')">
-      <span class="nav-icon">👥</span> سجل العمال
+      سجل العمال
     </div>
     <div class="nav-item" [class.active]="activeScreen === 'attendance'" (click)="showScreen('attendance')">
-      <span class="nav-icon">✅</span> تسجيل الحضور
+      تسجيل الحضور
     </div>
     <div class="nav-item" [class.active]="activeScreen === 'salary'" (click)="showScreen('salary')">
-      <span class="nav-icon">💰</span> الرواتب
+      الرواتب
     </div>
 
     <div class="nav-section">الإدارة</div>
     <div class="nav-item" [class.active]="activeScreen === 'approvals'" (click)="showScreen('approvals')">
-      <span class="nav-icon">📋</span> الاعتمادات
+      الاعتمادات
       <span class="nav-badge">3</span>
     </div>
     <div class="nav-item" [class.active]="activeScreen === 'reports'" (click)="showScreen('reports')">
-      <span class="nav-icon">📊</span> التقارير
+      التقارير
     </div>
   </nav>
 
@@ -62,7 +60,7 @@
     </div>
     <div class="topbar-actions">
       <span class="offline-badge">⚡ OFFLINE-FIRST</span>
-      <button class="btn btn-green btn-sm">+ إضافة عامل</button>
+      <button class="btn btn-green btn-sm" (click)="toggleAddWorkerModal(true)">+ إضافة عامل</button>
       <button class="btn btn-ghost btn-sm">⚙️</button>
     </div>
   </div>
@@ -297,7 +295,8 @@
             <option>حارس</option>
             <option>عامل</option>
           </select>
-          <div style="margin-right:auto;"><button class="btn btn-green btn-sm">+ تسجيل عامل جديد</button></div>
+          <div style="margin-right:auto;"><button class="btn btn-green btn-sm" (click)="toggleAddWorkerModal(true)">+
+              تسجيل عامل جديد</button></div>
         </div>
         <table>
           <thead>
@@ -355,7 +354,7 @@
                   </svg></div>
               </td>
               <td><span class="badge badge-green">● نشط</span></td>
-              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+              <td><button class="btn btn-ghost btn-sm" (click)="viewWorkerDetails({name: 'خالد محمد العمري', id: 'BD-00124', village: 'أم صيحون', category: 'كومبارس', phone: '0795-123456', status: 'نشط'})">تفاصيل</button></td>
             </tr>
             <tr>
               <td>
@@ -401,7 +400,7 @@
                   </svg></div>
               </td>
               <td><span class="badge badge-green">● نشط</span></td>
-              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+              <td><button class="btn btn-ghost btn-sm" (click)="viewWorkerDetails({name: 'سامر يوسف النعيمات', id: 'BD-00089', village: 'بيض', category: 'حارس', phone: '0796-234567', status: 'نشط'})">تفاصيل</button></td>
             </tr>
             <tr>
               <td>
@@ -446,7 +445,7 @@
                   </svg></div>
               </td>
               <td><span class="badge badge-gray">● موقوف</span></td>
-              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+              <td><button class="btn btn-ghost btn-sm" (click)="viewWorkerDetails({name: 'محمود إبراهيم الحلايقة', id: 'BD-00057', village: 'رجيفة', category: 'عامل', phone: '0798-456789', status: 'موقوف'})">تفاصيل</button></td>
             </tr>
             <tr>
               <td>
@@ -490,7 +489,7 @@
                   </svg></div>
               </td>
               <td><span class="badge badge-green">● نشط</span></td>
-              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+              <td><button class="btn btn-ghost btn-sm" (click)="viewWorkerDetails({name: 'فاطمة علي الزعبي', id: 'BD-00211', village: 'أم صيحون', category: 'كومبارس', phone: '0797-345678', status: 'نشط'})">تفاصيل</button></td>
             </tr>
           </tbody>
         </table>
@@ -1049,3 +1048,122 @@
 
   </div>
 </div>
+
+<!-- ADD WORKER MODAL -->
+@if (showAddWorkerModal) {
+<div class="modal-overlay" (click)="toggleAddWorkerModal(false)">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>تسجيل عامل جديد</h3>
+      <button class="close-btn" (click)="toggleAddWorkerModal(false)">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label class="form-label">الاسم الكامل</label>
+          <input type="text" class="form-input" placeholder="أدخل اسم العامل الرباعي...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">القرية</label>
+          <select class="form-select">
+            <option value="" disabled selected>اختر القرية...</option>
+            @for (village of villages; track village) {
+            <option [value]="village">{{ village }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">رقم الهوية</label>
+          <input type="text" class="form-input" placeholder="رقم الهوية الوطنية...">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">الصورة الشخصية</label>
+          <div class="photo-upload-box">
+            <div class="upload-icon">📸</div>
+            <div class="upload-text">اضغط هنا لرفع الصورة الشخصية</div>
+            <div class="upload-sub">PNG, JPG حتى 5MB</div>
+            <input type="file" class="file-input" accept="image/*">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" (click)="toggleAddWorkerModal(false)">إلغاء</button>
+      <button class="btn btn-green" (click)="toggleAddWorkerModal(false)">حفظ بيانات العامل</button>
+    </div>
+  </div>
+</div>
+}
+
+<!-- WORKER DETAILS MODAL -->
+@if (showWorkerDetailsModal && selectedWorker) {
+<div class="modal-overlay" (click)="closeWorkerDetails()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>تفاصيل العامل</h3>
+      <button class="close-btn" (click)="closeWorkerDetails()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:24px;">
+        <div class="avatar" style="width:80px;height:80px;font-size:32px;border-radius:20px;">
+          {{ selectedWorker.name.substring(0, 2) }}
+        </div>
+        <div style="flex:1">
+          <h2 style="font-size:24px;font-weight:900;color:var(--text);margin-bottom:4px;">{{ selectedWorker.name }}</h2>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span class="badge badge-gray mono">{{ selectedWorker.id }}</span>
+            <span class="badge" [class.badge-green]="selectedWorker.status === 'نشط'" [class.badge-red]="selectedWorker.status === 'موقوف'">
+              ● {{ selectedWorker.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="background:var(--gray-50);padding:20px;border-radius:var(--radius);border:1px solid var(--gray-100);">
+        <div>
+          <div class="text-muted" style="font-size:11px;margin-bottom:4px;">القرية</div>
+          <div style="font-weight:700;font-size:15px;">{{ selectedWorker.village }}</div>
+        </div>
+        <div>
+          <div class="text-muted" style="font-size:11px;margin-bottom:4px;">الفئة</div>
+          <div style="font-weight:700;font-size:15px;">{{ selectedWorker.category }}</div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="text-muted" style="font-size:11px;margin-bottom:4px;">رقم الهاتف</div>
+          <div class="mono" style="font-weight:700;font-size:15px;">{{ selectedWorker.phone }}</div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="text-muted" style="font-size:11px;margin-bottom:4px;">تاريخ التسجيل</div>
+          <div style="font-weight:700;font-size:15px;">12/03/2024</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;text-align:center;">
+        <div style="display:inline-block;padding:16px;background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);">
+          <div class="qr-box" style="width:120px;height:120px;">
+            <svg width="100" height="100" viewBox="0 0 29 29">
+              <rect width="29" height="29" fill="white" />
+              <rect x="1" y="1" width="8" height="8" fill="#0f7a4f" />
+              <rect x="2" y="2" width="6" height="6" fill="white" />
+              <rect x="3" y="3" width="4" height="4" fill="#0f7a4f" />
+              <rect x="20" y="1" width="8" height="8" fill="#0f7a4f" />
+              <rect x="21" y="2" width="6" height="6" fill="white" />
+              <rect x="22" y="3" width="4" height="4" fill="#0f7a4f" />
+              <rect x="1" y="20" width="8" height="8" fill="#0f7a4f" />
+              <rect x="2" y="21" width="6" height="6" fill="white" />
+              <rect x="3" y="22" width="4" height="4" fill="#0f7a4f" />
+              <rect x="10" y="10" width="10" height="10" fill="#0f7a4f" opacity="0.1" />
+            </svg>
+          </div>
+          <div class="text-muted mono" style="margin-top:8px;font-size:12px;">QR Code - Scan for Attendance</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" style="margin-left:auto;">طباعة البطاقة</button>
+      <button class="btn btn-ghost" (click)="closeWorkerDetails()">إغلاق</button>
+      <button class="btn btn-green">تعديل البيانات</button>
+    </div>
+  </div>
+</div>
+}
