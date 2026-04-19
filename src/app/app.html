@@ -1,0 +1,1051 @@
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo-area">
+    <img class="logo-img"
+      src="/logo-white.png"
+      alt="BaytAlUrdon">
+    <div class="logo-text">
+      <div class="l1">BaytAlUrdon</div>
+      <div class="l2">FilmSite Manager</div>
+    </div>
+  </div>
+
+  <div class="project-pill">
+    <div class="pp-label">المشروع الحالي</div>
+    <div class="pp-name">فيلم البتراء — الجزء الثاني</div>
+    <div class="pp-loc">📍 مواقع البتراء · الأردن</div>
+  </div>
+
+  <nav>
+    <div class="nav-section">الرئيسية</div>
+    <div class="nav-item" [class.active]="activeScreen === 'dashboard'" (click)="showScreen('dashboard')">
+      <span class="nav-icon">🏠</span> لوحة التحكم
+    </div>
+    <div class="nav-item" [class.active]="activeScreen === 'projects'" (click)="showScreen('projects')">
+      <span class="nav-icon">🎬</span> المشاريع
+    </div>
+
+    <div class="nav-section">العمالة</div>
+    <div class="nav-item" [class.active]="activeScreen === 'workers'" (click)="showScreen('workers')">
+      <span class="nav-icon">👥</span> سجل العمال
+    </div>
+    <div class="nav-item" [class.active]="activeScreen === 'attendance'" (click)="showScreen('attendance')">
+      <span class="nav-icon">✅</span> تسجيل الحضور
+    </div>
+    <div class="nav-item" [class.active]="activeScreen === 'salary'" (click)="showScreen('salary')">
+      <span class="nav-icon">💰</span> الرواتب
+    </div>
+
+    <div class="nav-section">الإدارة</div>
+    <div class="nav-item" [class.active]="activeScreen === 'approvals'" (click)="showScreen('approvals')">
+      <span class="nav-icon">📋</span> الاعتمادات
+      <span class="nav-badge">3</span>
+    </div>
+    <div class="nav-item" [class.active]="activeScreen === 'reports'" (click)="showScreen('reports')">
+      <span class="nav-icon">📊</span> التقارير
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="online-dot"></div>
+    متصل · مزامنة 09:42 ص
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">{{ pageTitle }}</div>
+      <div class="topbar-crumb">BaytAlUrdon › <span>{{ pageCrumb }}</span></div>
+    </div>
+    <div class="topbar-actions">
+      <span class="offline-badge">⚡ OFFLINE-FIRST</span>
+      <button class="btn btn-green btn-sm">+ إضافة عامل</button>
+      <button class="btn btn-ghost btn-sm">⚙️</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ===== DASHBOARD ===== -->
+    @if (activeScreen === 'dashboard') {
+    <div class="screen active">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">إجمالي العمال</div>
+          <div class="stat-value green">284</div>
+          <div class="stat-sub">↑ 12 هذا الأسبوع</div>
+          <div class="stat-icon">👥</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">حضور اليوم</div>
+          <div class="stat-value">196</div>
+          <div class="stat-sub">69% من الإجمالي</div>
+          <div class="stat-icon">✅</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="stat-label">غائبون</div>
+          <div class="stat-value">88</div>
+          <div class="stat-sub">31% · غير مبرر: 22</div>
+          <div class="stat-icon">🚫</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">مدفوعات اليوم</div>
+          <div class="stat-value">3,920</div>
+          <div class="stat-sub mono">JOD · انتظار اعتماد: 3</div>
+          <div class="stat-icon">💰</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:20px;">
+
+        <!-- ATTENDANCE -->
+        <div class="card">
+          <div class="card-head">
+            <h3>سجل الحضور — اليوم</h3>
+            <span class="gps-tag">📍 الوادي الرئيسي</span>
+          </div>
+          <div style="padding:8px 20px;">
+            <div class="att-row">
+              <div class="avatar">خا</div>
+              <div style="flex:1">
+                <div class="att-name">خالد محمد العمري</div>
+                <div class="att-meta">BD-00124 · كومبارس</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted)">08:14 ص</div>
+              <span class="badge badge-green">✓ حضور</span>
+            </div>
+            <div class="att-row">
+              <div class="avatar">سا</div>
+              <div style="flex:1">
+                <div class="att-name">سامر يوسف النعيمات</div>
+                <div class="att-meta">BD-00089 · حارس</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted)">08:21 ص</div>
+              <span class="badge badge-green">✓ حضور</span>
+            </div>
+            <div class="att-row">
+              <div class="avatar">فا</div>
+              <div style="flex:1">
+                <div class="att-name">فاطمة علي الزعبي</div>
+                <div class="att-meta">BD-00211 · كومبارس</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted)">08:33 ص</div>
+              <span class="badge badge-green">✓ حضور</span>
+            </div>
+            <div class="att-row">
+              <div class="avatar" style="background:linear-gradient(135deg,#94a3b8,#64748b)">مح</div>
+              <div style="flex:1">
+                <div class="att-name">محمود إبراهيم الحلايقة</div>
+                <div class="att-meta">BD-00057 · عامل</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted)">—</div>
+              <span class="badge badge-red">✕ غائب</span>
+            </div>
+            <div class="att-row">
+              <div class="avatar">نو</div>
+              <div style="flex:1">
+                <div class="att-name">نوال عيسى القطاونة</div>
+                <div class="att-meta">BD-00178 · كومبارس</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted)">09:02 ص</div>
+              <span class="badge badge-green">✓ حضور</span>
+            </div>
+            <div style="text-align:center;padding:12px 0 4px;">
+              <button class="btn btn-ghost btn-sm" (click)="showScreen('attendance')">عرض الكل (196) ←</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <!-- VILLAGE BREAKDOWN -->
+          <div class="card">
+            <div class="card-head">
+              <h3>الحضور حسب القرية</h3>
+            </div>
+            <div class="card-body" style="padding-top:12px;">
+              <div class="progress-wrap">
+                <div class="progress-label"><span>أم صيحون</span><span class="progress-sub mono">74 / 95</span></div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:78%"></div>
+                </div>
+              </div>
+              <div class="progress-wrap">
+                <div class="progress-label"><span>بيض</span><span class="progress-sub mono">52 / 68</span></div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:76%"></div>
+                </div>
+              </div>
+              <div class="progress-wrap">
+                <div class="progress-label"><span>البيضاء</span><span class="progress-sub mono">45 / 70</span></div>
+                <div class="progress-bar">
+                  <div class="progress-fill blue" style="width:64%"></div>
+                </div>
+              </div>
+              <div class="progress-wrap" style="margin-bottom:0">
+                <div class="progress-label"><span>رجيفة</span><span class="progress-sub mono">25 / 51</span></div>
+                <div class="progress-bar">
+                  <div class="progress-fill amber" style="width:49%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ALERTS -->
+          <div class="card">
+            <div class="card-head">
+              <h3>تنبيهات النظام</h3>
+            </div>
+            <div style="padding:12px 14px;">
+              <div class="notif warn">
+                <div class="notif-icon">⚠️</div>
+                <div>
+                  <div class="notif-title">راتب بدون حضور مسجل</div>
+                  <div class="notif-body">أحمد سالم · BD-00302 — تم حجب الصرف</div>
+                </div>
+              </div>
+              <div class="notif ok">
+                <div class="notif-icon">🔄</div>
+                <div>
+                  <div class="notif-title">مزامنة ناجحة</div>
+                  <div class="notif-body">رُفع 47 سجل حضور من موقع الجبل · 09:42 ص</div>
+                </div>
+              </div>
+              <div class="notif err" style="margin-bottom:0">
+                <div class="notif-icon">🔒</div>
+                <div>
+                  <div class="notif-title">محاولة تعديل بيانات معتمدة</div>
+                  <div class="notif-body">data_01 — تم الرفض وتسجيل العملية</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PENDING APPROVALS -->
+      <div class="section-head">
+        <h2>بانتظار الاعتماد</h2>
+        <div class="line"></div>
+        <button class="btn btn-ghost btn-sm" (click)="showScreen('approvals')">عرض الكل</button>
+      </div>
+      <div class="grid-3">
+        <div class="approval-item">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div class="avatar">أم</div>
+            <div>
+              <div style="font-weight:800;font-size:13.5px;">كشف رواتب — أم صيحون</div>
+              <div class="text-muted mono">74 عامل · 2,590 JOD</div>
+            </div>
+            <span class="badge badge-amber" style="margin-right:auto;">⏳</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-approve" style="flex:1">✓ اعتماد</button>
+            <button class="btn-reject" style="flex:1">✕ رفض</button>
+          </div>
+        </div>
+        <div class="approval-item">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div class="avatar">بض</div>
+            <div>
+              <div style="font-weight:800;font-size:13.5px;">كشف رواتب — بيض</div>
+              <div class="text-muted mono">52 عامل · 1,820 JOD</div>
+            </div>
+            <span class="badge badge-amber" style="margin-right:auto;">⏳</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-approve" style="flex:1">✓ اعتماد</button>
+            <button class="btn-reject" style="flex:1">✕ رفض</button>
+          </div>
+        </div>
+        <div class="approval-item">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div class="avatar">رج</div>
+            <div>
+              <div style="font-weight:800;font-size:13.5px;">تسوية عمالة — رجيفة</div>
+              <div class="text-muted mono">25 عامل · 875 JOD</div>
+            </div>
+            <span class="badge badge-amber" style="margin-right:auto;">⏳</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-approve" style="flex:1">✓ اعتماد</button>
+            <button class="btn-reject" style="flex:1">✕ رفض</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- ===== WORKERS ===== -->
+    @if (activeScreen === 'workers') {
+    <div class="screen active">
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <input class="search-input" placeholder="🔍  بحث بالاسم أو رقم الهوية...">
+          <select class="form-select" style="width:140px;">
+            <option>كل القرى</option>
+            <option>أم صيحون</option>
+            <option>بيض</option>
+            <option>البيضاء</option>
+            <option>رجيفة</option>
+          </select>
+          <select class="form-select" style="width:140px;">
+            <option>كل الفئات</option>
+            <option>كومبارس</option>
+            <option>حارس</option>
+            <option>عامل</option>
+          </select>
+          <div style="margin-right:auto;"><button class="btn btn-green btn-sm">+ تسجيل عامل جديد</button></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>العامل</th>
+              <th>رقم ID</th>
+              <th>القرية</th>
+              <th>الفئة</th>
+              <th>الراتب اليومي</th>
+              <th>QR</th>
+              <th>الحالة</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">خا</div>
+                  <div>
+                    <div style="font-weight:700">خالد محمد العمري</div>
+                    <div class="text-muted mono">0795-123456</div>
+                  </div>
+                </div>
+              </td>
+              <td class="mono text-muted">BD-00124</td>
+              <td>أم صيحون</td>
+              <td><span class="badge badge-amber">كومبارس</span></td>
+              <td class="mono text-green" style="font-weight:700">35 JOD</td>
+              <td>
+                <div class="qr-box"><svg width="26" height="26" viewBox="0 0 29 29">
+                    <rect width="29" height="29" fill="white" />
+                    <rect x="1" y="1" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="2" y="2" width="6" height="6" fill="white" />
+                    <rect x="3" y="3" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="20" y="1" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="21" y="2" width="6" height="6" fill="white" />
+                    <rect x="22" y="3" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="1" y="20" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="2" y="21" width="6" height="6" fill="white" />
+                    <rect x="3" y="22" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="10" y="1" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="13" y="1" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="10" y="4" width="3" height="2" fill="#1a9e6a" />
+                    <rect x="15" y="10" width="2" height="4" fill="#1a9e6a" />
+                    <rect x="18" y="10" width="3" height="2" fill="#1a9e6a" />
+                    <rect x="10" y="10" width="4" height="2" fill="#1a9e6a" />
+                    <rect x="22" y="10" width="2" height="3" fill="#1a9e6a" />
+                    <rect x="10" y="14" width="2" height="4" fill="#1a9e6a" />
+                    <rect x="14" y="14" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="10" y="20" width="3" height="2" fill="#1a9e6a" />
+                    <rect x="15" y="21" width="2" height="3" fill="#1a9e6a" />
+                    <rect x="20" y="20" width="2" height="3" fill="#1a9e6a" />
+                    <rect x="24" y="21" width="4" height="2" fill="#1a9e6a" />
+                  </svg></div>
+              </td>
+              <td><span class="badge badge-green">● نشط</span></td>
+              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">سا</div>
+                  <div>
+                    <div style="font-weight:700">سامر يوسف النعيمات</div>
+                    <div class="text-muted mono">0796-234567</div>
+                  </div>
+                </div>
+              </td>
+              <td class="mono text-muted">BD-00089</td>
+              <td>بيض</td>
+              <td><span class="badge badge-blue">حارس</span></td>
+              <td class="mono text-green" style="font-weight:700">40 JOD</td>
+              <td>
+                <div class="qr-box"><svg width="26" height="26" viewBox="0 0 29 29">
+                    <rect width="29" height="29" fill="white" />
+                    <rect x="1" y="1" width="8" height="8" fill="#0f7a4f" />
+                    <rect x="2" y="2" width="6" height="6" fill="white" />
+                    <rect x="3" y="3" width="4" height="4" fill="#0f7a4f" />
+                    <rect x="20" y="1" width="8" height="8" fill="#0f7a4f" />
+                    <rect x="21" y="2" width="6" height="6" fill="white" />
+                    <rect x="22" y="3" width="4" height="4" fill="#0f7a4f" />
+                    <rect x="1" y="20" width="8" height="8" fill="#0f7a4f" />
+                    <rect x="2" y="21" width="6" height="6" fill="white" />
+                    <rect x="3" y="22" width="4" height="4" fill="#0f7a4f" />
+                    <rect x="11" y="2" width="3" height="2" fill="#0f7a4f" />
+                    <rect x="15" y="1" width="2" height="3" fill="#0f7a4f" />
+                    <rect x="12" y="5" width="4" height="2" fill="#0f7a4f" />
+                    <rect x="10" y="10" width="3" height="3" fill="#0f7a4f" />
+                    <rect x="14" y="11" width="2" height="2" fill="#0f7a4f" />
+                    <rect x="17" y="10" width="4" height="2" fill="#0f7a4f" />
+                    <rect x="22" y="11" width="3" height="2" fill="#0f7a4f" />
+                    <rect x="10" y="15" width="2" height="3" fill="#0f7a4f" />
+                    <rect x="14" y="16" width="4" height="2" fill="#0f7a4f" />
+                    <rect x="22" y="14" width="2" height="3" fill="#0f7a4f" />
+                    <rect x="25" y="15" width="3" height="2" fill="#0f7a4f" />
+                    <rect x="10" y="20" width="3" height="4" fill="#0f7a4f" />
+                    <rect x="15" y="21" width="3" height="3" fill="#0f7a4f" />
+                    <rect x="19" y="20" width="2" height="2" fill="#0f7a4f" />
+                    <rect x="22" y="21" width="3" height="2" fill="#0f7a4f" />
+                  </svg></div>
+              </td>
+              <td><span class="badge badge-green">● نشط</span></td>
+              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar" style="background:linear-gradient(135deg,#94a3b8,#64748b)">مح</div>
+                  <div>
+                    <div style="font-weight:700">محمود إبراهيم الحلايقة</div>
+                    <div class="text-muted mono">0798-456789</div>
+                  </div>
+                </div>
+              </td>
+              <td class="mono text-muted">BD-00057</td>
+              <td>رجيفة</td>
+              <td><span class="badge badge-gray">عامل</span></td>
+              <td class="mono text-green" style="font-weight:700">25 JOD</td>
+              <td>
+                <div class="qr-box"><svg width="26" height="26" viewBox="0 0 29 29">
+                    <rect width="29" height="29" fill="white" />
+                    <rect x="1" y="1" width="8" height="8" fill="#6b8f7d" />
+                    <rect x="2" y="2" width="6" height="6" fill="white" />
+                    <rect x="3" y="3" width="4" height="4" fill="#6b8f7d" />
+                    <rect x="20" y="1" width="8" height="8" fill="#6b8f7d" />
+                    <rect x="21" y="2" width="6" height="6" fill="white" />
+                    <rect x="22" y="3" width="4" height="4" fill="#6b8f7d" />
+                    <rect x="1" y="20" width="8" height="8" fill="#6b8f7d" />
+                    <rect x="2" y="21" width="6" height="6" fill="white" />
+                    <rect x="3" y="22" width="4" height="4" fill="#6b8f7d" />
+                    <rect x="10" y="2" width="4" height="2" fill="#6b8f7d" />
+                    <rect x="15" y="1" width="2" height="4" fill="#6b8f7d" />
+                    <rect x="11" y="6" width="2" height="2" fill="#6b8f7d" />
+                    <rect x="10" y="10" width="2" height="3" fill="#6b8f7d" />
+                    <rect x="13" y="11" width="3" height="2" fill="#6b8f7d" />
+                    <rect x="17" y="10" width="4" height="2" fill="#6b8f7d" />
+                    <rect x="22" y="10" width="3" height="3" fill="#6b8f7d" />
+                    <rect x="26" y="10" width="2" height="2" fill="#6b8f7d" />
+                    <rect x="11" y="14" width="4" height="2" fill="#6b8f7d" />
+                    <rect x="16" y="13" width="2" height="4" fill="#6b8f7d" />
+                    <rect x="19" y="15" width="2" height="2" fill="#6b8f7d" />
+                    <rect x="10" y="20" width="2" height="4" fill="#6b8f7d" />
+                    <rect x="13" y="21" width="4" height="2" fill="#6b8f7d" />
+                    <rect x="18" y="20" width="3" height="3" fill="#6b8f7d" />
+                  </svg></div>
+              </td>
+              <td><span class="badge badge-gray">● موقوف</span></td>
+              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">فا</div>
+                  <div>
+                    <div style="font-weight:700">فاطمة علي الزعبي</div>
+                    <div class="text-muted mono">0797-345678</div>
+                  </div>
+                </div>
+              </td>
+              <td class="mono text-muted">BD-00211</td>
+              <td>أم صيحون</td>
+              <td><span class="badge badge-amber">كومبارس</span></td>
+              <td class="mono text-green" style="font-weight:700">30 JOD</td>
+              <td>
+                <div class="qr-box"><svg width="26" height="26" viewBox="0 0 29 29">
+                    <rect width="29" height="29" fill="white" />
+                    <rect x="1" y="1" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="2" y="2" width="6" height="6" fill="white" />
+                    <rect x="3" y="3" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="20" y="1" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="21" y="2" width="6" height="6" fill="white" />
+                    <rect x="22" y="3" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="1" y="20" width="8" height="8" fill="#1a9e6a" />
+                    <rect x="2" y="21" width="6" height="6" fill="white" />
+                    <rect x="3" y="22" width="4" height="4" fill="#1a9e6a" />
+                    <rect x="10" y="2" width="2" height="3" fill="#1a9e6a" />
+                    <rect x="13" y="1" width="4" height="2" fill="#1a9e6a" />
+                    <rect x="18" y="2" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="11" y="5" width="3" height="3" fill="#1a9e6a" />
+                    <rect x="10" y="10" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="13" y="10" width="4" height="3" fill="#1a9e6a" />
+                    <rect x="18" y="10" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="21" y="10" width="4" height="2" fill="#1a9e6a" />
+                    <rect x="10" y="14" width="3" height="4" fill="#1a9e6a" />
+                    <rect x="14" y="15" width="2" height="2" fill="#1a9e6a" />
+                    <rect x="10" y="20" width="2" height="4" fill="#1a9e6a" />
+                    <rect x="13" y="21" width="3" height="2" fill="#1a9e6a" />
+                    <rect x="17" y="20" width="4" height="2" fill="#1a9e6a" />
+                  </svg></div>
+              </td>
+              <td><span class="badge badge-green">● نشط</span></td>
+              <td><button class="btn btn-ghost btn-sm">تفاصيل</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          style="padding:13px 20px;border-top:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;">
+          <span class="text-muted">عرض 4 من 284 عامل</span>
+          <div style="display:flex;gap:6px;">
+            <button class="btn btn-ghost btn-sm">السابق</button>
+            <button class="btn btn-green btn-sm">1</button>
+            <button class="btn btn-ghost btn-sm">2</button>
+            <button class="btn btn-ghost btn-sm">3</button>
+            <button class="btn btn-ghost btn-sm">التالي</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- ===== ATTENDANCE ===== -->
+    @if (activeScreen === 'attendance') {
+    <div class="screen active">
+      <div class="grid-2">
+        <div>
+          <div class="card mb-16">
+            <div class="card-head">
+              <h3>مسح الحضور اليومي</h3>
+              <span class="offline-badge">⚡ OFFLINE</span>
+            </div>
+            <div class="card-body">
+              <div class="form-row">
+                <label class="form-label">المشروع</label>
+                <select class="form-select">
+                  <option>فيلم البتراء — الجزء الثاني</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label class="form-label">موقع التصوير</label>
+                <select class="form-select">
+                  <option>الوادي الرئيسي</option>
+                  <option>السيق</option>
+                  <option>الخزنة</option>
+                  <option>الدير</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label class="form-label">التاريخ</label>
+                <input class="form-input" value="الأربعاء، 16 أبريل 2025" readonly>
+              </div>
+              <div class="scanner-box">
+                <div class="scanner-icon">📷</div>
+                <div class="scanner-title">جاهز للمسح</div>
+                <div class="scanner-sub">وجّه الكاميرا نحو كود QR الخاص بالعامل</div>
+                <div style="margin-top:14px;"><button class="btn btn-green">تشغيل الكاميرا</button></div>
+              </div>
+              <div class="divider"></div>
+              <div style="display:flex;gap:8px;">
+                <input class="form-input" placeholder="أو أدخل رقم ID يدوياً..." style="flex:1">
+                <button class="btn btn-outline">تسجيل</button>
+              </div>
+            </div>
+          </div>
+          <div class="notif ok">
+            <div class="notif-icon">📍</div>
+            <div>
+              <div class="notif-title">الموقع مُوثَّق بالـ GPS</div>
+              <div class="notif-body mono" style="font-size:10.5px">30.3285° N, 35.4444° E — الوادي الرئيسي، البتراء
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>سجل اليوم</h3>
+            <span style="font-size:12px;color:var(--muted)">196 / 284 مسجّل</span>
+          </div>
+          <div style="padding:4px 20px;max-height:calc(100vh - 280px);overflow-y:auto;">
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">09:48</div>
+              <div class="avatar">نو</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">نوال عيسى القطاونة</div>
+                <div class="att-meta">BD-00178</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">09:41</div>
+              <div class="avatar">عم</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">عمر حسين الطراونة</div>
+                <div class="att-meta">BD-00294</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">09:22</div>
+              <div class="avatar">يا</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">ياسر إبراهيم الحجي</div>
+                <div class="att-meta">BD-00083</div>
+              </div>
+              <span class="badge badge-amber">⚠ مكرر</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">09:15</div>
+              <div class="avatar">سا</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">سامر يوسف النعيمات</div>
+                <div class="att-meta">BD-00089</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">09:02</div>
+              <div class="avatar">فا</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">فاطمة علي الزعبي</div>
+                <div class="att-meta">BD-00211</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">08:33</div>
+              <div class="avatar">خا</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">خالد محمد العمري</div>
+                <div class="att-meta">BD-00124</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+            <div class="att-row">
+              <div class="mono" style="font-size:10px;color:var(--muted);width:50px;flex-shrink:0;">08:21</div>
+              <div class="avatar">رن</div>
+              <div style="flex:1">
+                <div style="font-weight:700;font-size:13px;">رنا أحمد الشوارب</div>
+                <div class="att-meta">BD-00049</div>
+              </div>
+              <span class="badge badge-green">✓</span>
+            </div>
+          </div>
+          <div style="padding:12px 20px;border-top:1px solid var(--gray-100);text-align:center;">
+            <button class="btn btn-outline btn-sm">📤 تصدير سجل اليوم</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- ===== SALARY ===== -->
+    @if (activeScreen === 'salary') {
+    <div class="screen active">
+      <div class="salary-summary">
+        <div class="sal-item">
+          <div class="sl">إجمالي اليوم</div>
+          <div class="sv">6,840 JOD</div>
+        </div>
+        <div class="sal-divider"></div>
+        <div class="sal-item">
+          <div class="sl">معتمد</div>
+          <div class="sv">3,920 JOD</div>
+        </div>
+        <div class="sal-divider"></div>
+        <div class="sal-item">
+          <div class="sl">انتظار اعتماد</div>
+          <div class="sv" style="color:rgba(255,255,255,0.75)">2,920 JOD</div>
+        </div>
+        <div class="sal-divider"></div>
+        <div class="sal-item">
+          <div class="sl">محجوب (غائبون)</div>
+          <div class="sv" style="color:rgba(255,255,255,0.5)">0 JOD</div>
+        </div>
+        <div style="margin-right:auto;">
+          <button class="btn btn-ghost"
+            style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.25);">📄 استخراج كشف
+            الرواتب</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <select class="form-select" style="width:200px;">
+            <option>فيلم البتراء — الجزء الثاني</option>
+          </select>
+          <select class="form-select" style="width:150px;">
+            <option>16 أبريل 2025</option>
+          </select>
+          <select class="form-select" style="width:130px;">
+            <option>كل القرى</option>
+            <option>أم صيحون</option>
+          </select>
+          <input class="search-input" placeholder="🔍 بحث..." style="margin-right:auto;width:180px;">
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>العامل</th>
+              <th>القرية</th>
+              <th>الفئة</th>
+              <th>الحضور</th>
+              <th>الراتب المتفق</th>
+              <th>الإجمالي</th>
+              <th>حالة الصرف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">خا</div>
+                  <div style="font-weight:700">خالد محمد العمري</div>
+                </div>
+              </td>
+              <td>أم صيحون</td>
+              <td><span class="badge badge-amber">كومبارس</span></td>
+              <td><span class="badge badge-green">✓ حاضر</span></td>
+              <td class="mono">35 JOD / يوم</td>
+              <td class="mono text-green" style="font-weight:800">35.00 JOD</td>
+              <td><span class="badge badge-green">✓ معتمد</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">سا</div>
+                  <div style="font-weight:700">سامر يوسف النعيمات</div>
+                </div>
+              </td>
+              <td>بيض</td>
+              <td><span class="badge badge-blue">حارس</span></td>
+              <td><span class="badge badge-green">✓ حاضر</span></td>
+              <td class="mono">40 JOD / يوم</td>
+              <td class="mono text-green" style="font-weight:800">40.00 JOD</td>
+              <td><span class="badge badge-amber">⏳ انتظار</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar" style="background:linear-gradient(135deg,#94a3b8,#64748b)">مح</div>
+                  <div style="font-weight:700">محمود إبراهيم الحلايقة</div>
+                </div>
+              </td>
+              <td>رجيفة</td>
+              <td><span class="badge badge-gray">عامل</span></td>
+              <td><span class="badge badge-red">✕ غائب</span></td>
+              <td class="mono">25 JOD / يوم</td>
+              <td class="mono text-muted">—</td>
+              <td><span class="badge badge-red">🔒 محجوب</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar">فا</div>
+                  <div style="font-weight:700">فاطمة علي الزعبي</div>
+                </div>
+              </td>
+              <td>أم صيحون</td>
+              <td><span class="badge badge-amber">كومبارس</span></td>
+              <td><span class="badge badge-green">✓ حاضر</span></td>
+              <td class="mono">30 JOD / يوم</td>
+              <td class="mono text-green" style="font-weight:800">30.00 JOD</td>
+              <td><span class="badge badge-green">✓ معتمد</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    }
+
+    <!-- ===== APPROVALS ===== -->
+    @if (activeScreen === 'approvals') {
+    <div class="screen active">
+      <div class="notif warn" style="margin-bottom:20px;">
+        <div class="notif-icon">📋</div>
+        <div>
+          <div class="notif-title">3 كشوف رواتب بانتظار موافقتك</div>
+          <div class="notif-body">لا يمكن تعديل أي بيانات بعد الاعتماد — جميع العمليات مسجّلة في Audit Log</div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="section-head">
+            <h2>بانتظار الاعتماد</h2>
+            <div class="line"></div>
+          </div>
+
+          <div class="approval-item">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+              <div class="avatar">أم</div>
+              <div style="flex:1">
+                <div style="font-weight:800;font-size:14px;">كشف رواتب — أم صيحون</div>
+                <div class="text-muted mono">74 عامل · 16 أبريل 2025 · data_01</div>
+              </div>
+              <span class="badge badge-amber">⏳ انتظار</span>
+            </div>
+            <div
+              style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:var(--gray-50);border-radius:var(--radius-sm);padding:12px;margin-bottom:12px;">
+              <div>
+                <div class="text-muted" style="font-size:10px;">حاضرين</div>
+                <div style="font-weight:800;font-size:20px;color:var(--green)">74</div>
+              </div>
+              <div>
+                <div class="text-muted" style="font-size:10px;">غائبين</div>
+                <div style="font-weight:800;font-size:20px;color:var(--red)">21</div>
+              </div>
+              <div>
+                <div class="text-muted" style="font-size:10px;">المبلغ</div>
+                <div style="font-weight:800;font-size:20px;color:var(--green-dark)">2,590 JOD</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn-approve" style="flex:1;padding:10px;">✓ اعتماد الكشف</button>
+              <button class="btn-reject" style="flex:1;padding:10px;">✕ رفض</button>
+            </div>
+          </div>
+
+          <div class="approval-item">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+              <div class="avatar">بض</div>
+              <div style="flex:1">
+                <div style="font-weight:800;font-size:14px;">كشف رواتب — بيض</div>
+                <div class="text-muted mono">52 عامل · 16 أبريل 2025 · data_02</div>
+              </div>
+              <span class="badge badge-amber">⏳ انتظار</span>
+            </div>
+            <div
+              style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:var(--gray-50);border-radius:var(--radius-sm);padding:12px;margin-bottom:12px;">
+              <div>
+                <div class="text-muted" style="font-size:10px;">حاضرين</div>
+                <div style="font-weight:800;font-size:20px;color:var(--green)">52</div>
+              </div>
+              <div>
+                <div class="text-muted" style="font-size:10px;">غائبين</div>
+                <div style="font-weight:800;font-size:20px;color:var(--red)">16</div>
+              </div>
+              <div>
+                <div class="text-muted" style="font-size:10px;">المبلغ</div>
+                <div style="font-weight:800;font-size:20px;color:var(--green-dark)">1,820 JOD</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn-approve" style="flex:1;padding:10px;">✓ اعتماد الكشف</button>
+              <button class="btn-reject" style="flex:1;padding:10px;">✕ رفض</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2>سجل العمليات</h2>
+            <div class="line"></div>
+          </div>
+          <div class="card">
+            <div class="card-body" style="padding:14px 16px;">
+              <div class="log-line log-green">[09:48] ✓ APPROVED — البيضاء — 45 عامل — 1,350 JOD</div>
+              <div class="log-line log-muted">[09:42] SYNC — رُفع 47 سجل حضور من موقع الجبل</div>
+              <div class="log-line log-red">[09:31] BLOCKED — محاولة تعديل بيانات معتمدة — user:data_01</div>
+              <div class="log-line log-amber">[09:15] WARN — راتب بدون حضور — BD-00302 — تجميد</div>
+              <div class="log-line log-green">[08:55] ✓ APPROVED — السيق — 38 عامل — 1,140 JOD</div>
+              <div class="log-line log-muted">[08:30] LOGIN — admin — 192.168.1.45</div>
+              <div class="log-line log-muted" style="border:none">[08:14] SCAN — BD-00124 — GPS:30.3285°N,35.4444°E
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- ===== REPORTS ===== -->
+    @if (activeScreen === 'reports') {
+    <div class="screen active">
+      <div class="stats-grid" style="margin-bottom:20px;">
+        <div class="stat-card">
+          <div class="stat-label">أيام التصوير</div>
+          <div class="stat-value green">28</div>
+          <div class="stat-sub">من 45 يوم مخطط</div>
+          <div class="stat-icon">🎬</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">إجمالي المدفوعات</div>
+          <div class="stat-value">62,450</div>
+          <div class="stat-sub mono">JOD</div>
+          <div class="stat-icon">💰</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">متوسط الحضور</div>
+          <div class="stat-value">204</div>
+          <div class="stat-sub">من 284 عامل</div>
+          <div class="stat-icon">👥</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">تلاعب مكتشف</div>
+          <div class="stat-value">0</div>
+          <div class="stat-sub">حالة منذ بداية المشروع</div>
+          <div class="stat-icon">🔒</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <h3>المدفوعات اليومية — آخر أسبوع</h3>
+            <button class="btn btn-ghost btn-sm">📤 Excel</button>
+          </div>
+          <div class="card-body">
+            <div class="chart-bars">
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:55px"></div>
+                <div class="chart-lbl">أح</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:70px"></div>
+                <div class="chart-lbl">اث</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:48px"></div>
+                <div class="chart-lbl">ثل</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:82px"></div>
+                <div class="chart-lbl">أر</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:65px"></div>
+                <div class="chart-lbl">خم</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar active" style="height:90px"></div>
+                <div class="chart-lbl">جم</div>
+              </div>
+              <div class="chart-bar-wrap">
+                <div class="chart-bar" style="height:15px;background:var(--gray-100)"></div>
+                <div class="chart-lbl">سب</div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:11px;"
+              class="text-muted mono">
+              <span>أدنى: 4,400 JOD</span><span>أعلى: 7,200 JOD</span><span>متوسط: 6,120 JOD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>تقرير حسب القرية</h3>
+          </div>
+          <div class="card-body" style="padding:10px 20px;">
+            <table style="width:100%">
+              <thead>
+                <tr>
+                  <th style="background:none;padding:8px 0;font-size:10px;">القرية</th>
+                  <th style="background:none;padding:8px 0;font-size:10px;">العمال</th>
+                  <th style="background:none;padding:8px 0;font-size:10px;">الحضور</th>
+                  <th style="background:none;padding:8px 0;font-size:10px;">المدفوعات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:9px 0;font-weight:700;">أم صيحون</td>
+                  <td class="mono">95</td>
+                  <td><span class="badge badge-green">78%</span></td>
+                  <td class="mono text-green" style="font-weight:700;">22,400 JOD</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0;font-weight:700;">بيض</td>
+                  <td class="mono">68</td>
+                  <td><span class="badge badge-green">76%</span></td>
+                  <td class="mono text-green" style="font-weight:700;">17,850 JOD</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0;font-weight:700;">البيضاء</td>
+                  <td class="mono">70</td>
+                  <td><span class="badge badge-amber">64%</span></td>
+                  <td class="mono text-green" style="font-weight:700;">14,200 JOD</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0;font-weight:700;">رجيفة</td>
+                  <td class="mono">51</td>
+                  <td><span class="badge badge-red">49%</span></td>
+                  <td class="mono text-green" style="font-weight:700;">8,000 JOD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:10px;">
+        <button class="btn btn-green">📄 تصدير كشف رواتب PDF</button>
+        <button class="btn btn-outline">📊 Excel</button>
+        <button class="btn btn-ghost">🖨️ طباعة</button>
+      </div>
+    </div>
+    }
+
+    <!-- ===== PROJECTS ===== -->
+    @if (activeScreen === 'projects') {
+    <div class="screen active">
+      <div class="grid-3">
+        <div class="project-card" style="border-color:var(--green-mid);">
+          <div class="project-card-top">
+            <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
+              <span class="badge badge-green">● جارٍ الآن</span>
+              <span class="text-muted mono" style="font-size:10px;">PRJ-2025-001</span>
+            </div>
+            <div style="font-size:16px;font-weight:900;margin-bottom:5px;color:var(--text)">فيلم البتراء — الجزء الثاني
+            </div>
+            <div class="text-muted" style="font-size:12px;margin-bottom:16px;">📍 مواقع البتراء، وادي موسى</div>
+            <div class="progress-wrap" style="margin-bottom:0">
+              <div class="progress-label"><span>التقدم</span><span class="progress-sub">28 / 45 يوم</span></div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:62%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-bottom">
+            <div><span class="text-muted">العمال:</span> <strong>284</strong></div>
+            <div><span class="text-muted">المدفوعات:</span> <strong class="text-green">62,450 JOD</strong></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
+              <span class="badge badge-gray">● مكتمل</span>
+              <span class="text-muted mono" style="font-size:10px;">PRJ-2024-008</span>
+            </div>
+            <div style="font-size:16px;font-weight:900;margin-bottom:5px;color:var(--text)">وادي رم — الصحراء الصامتة
+            </div>
+            <div class="text-muted" style="font-size:12px;margin-bottom:16px;">📍 وادي رم، العقبة</div>
+            <div class="progress-wrap" style="margin-bottom:0">
+              <div class="progress-label"><span>التقدم</span><span class="progress-sub">60 / 60 يوم</span></div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-bottom">
+            <div><span class="text-muted">العمال:</span> <strong>312</strong></div>
+            <div><span class="text-muted">المدفوعات:</span> <strong class="text-green">94,200 JOD</strong></div>
+          </div>
+        </div>
+
+        <div
+          style="border:2px dashed var(--gray-200);border-radius:var(--radius);background:transparent;display:flex;align-items:center;justify-content:center;min-height:180px;cursor:pointer;transition:border-color 0.18s,background 0.18s;"
+          onmouseover="this.style.borderColor='var(--green)';this.style.background='var(--green-glow)'"
+          onmouseout="this.style.borderColor='var(--gray-200)';this.style.background='transparent'">
+          <div style="text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;opacity:0.3">+</div>
+            <div style="font-size:14px;font-weight:700;color:var(--muted)">مشروع جديد</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+  </div>
+</div>
